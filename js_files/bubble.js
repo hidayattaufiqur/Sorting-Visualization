@@ -20,7 +20,7 @@ async function bubble() {
     ele[0].style.background = 'green';
 }
 
-const bubSortbtn = document.querySelector(".bubbleSort");
+const bubSortbtn = document.querySelector(".start");
 bubSortbtn.addEventListener('click', async function(){
     disableSortingBtn();
     disableSizeSlider();

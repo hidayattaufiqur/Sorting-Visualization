@@ -10,19 +10,19 @@ function swap(el1, el2) {
 
 // Disables sorting buttons used in conjunction with enable, so that we can disable during sorting and enable buttons after it
 function disableSortingBtn(){
-    document.querySelector(".bubbleSort").disabled = true;
+    // document.querySelector(".bubbleSort").disabled = true;
     // document.querySelector(".insertionSort").disabled = true;
     // document.querySelector(".mergeSort").disabled = true;
-    document.querySelector(".quickSort").disabled = true;
+    // document.querySelector(".quickSort").disabled = true;
     // document.querySelector(".selectionSort").disabled = true;
 }
 
 // Enables sorting buttons used in conjunction with disable
 function enableSortingBtn(){
-    document.querySelector(".bubbleSort").disabled = false;
+    // document.querySelector(".bubbleSort").disabled = false;
     // document.querySelector(".insertionSort").disabled = false;
     // document.querySelector(".mergeSort").disabled = false;
-    document.querySelector(".quickSort").disabled = false;
+    // document.querySelector(".quickSort").disabled = false;
     // document.querySelector(".selectionSort").disabled = false;
 }
 
@@ -76,6 +76,7 @@ delayElement.addEventListener('input', function(){
 
 // Creating array to store randomly generated numbers
 let array = [];
+let array2 = [];
 
 // Call to display bars right when you visit the site
 createNewArray();
@@ -84,16 +85,20 @@ createNewArray();
 function createNewArray(noOfBars = 60) {
     // calling helper function to delete old bars from dom
     deleteChild();
+    // deleteChildbBot();
 
     // creating an array of random numbers 
     array = [];
     for (let i = 0; i < noOfBars; i++) {
         array.push(Math.floor(Math.random() * 250) + 1);
     }
+    array2 = array;
     console.log(array);
+    console.log(array2);
 
     // select the div #bars element
     const bars = document.querySelector("#bars");
+    const barsBot = document.querySelector("#barsBot");
 
     // create multiple element div using loop and adding class 'bar col'
     for (let i = 0; i < noOfBars; i++) {
@@ -103,6 +108,15 @@ function createNewArray(noOfBars = 60) {
         bar.classList.add('flex-item');
         bar.classList.add(`barNo${i}`);
         bars.appendChild(bar);
+        
+    }
+    for (let i = 0; i < noOfBars; i++) {
+        const barBot = document.createElement("div");
+        barBot.style.height = `${array2[i]*2}px`;
+        barBot.classList.add('barBot');
+        barBot.classList.add('flex-item');
+        barBot.classList.add(`barNo${i}`);
+        barsBot.appendChild(barBot);
     }
 }
 
@@ -110,7 +124,13 @@ function createNewArray(noOfBars = 60) {
 function deleteChild() {
     const bar = document.querySelector("#bars");
     bar.innerHTML = '';
+    const barBot = document.querySelector("#barsBot");
+    barBot.innerHTML = '';
 }
+// function deleteChildbBot() {
+//     // const bar = document.querySelector("#barsBot");
+//     // bar.innerHTML = '';
+// }
 
 // Selecting newarray button from DOM and adding eventlistener
 const newArray = document.querySelector(".newArray");
